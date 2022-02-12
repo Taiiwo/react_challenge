@@ -10,16 +10,16 @@ class ArticleCard extends React.Component {
     }
   
     render() {
-      return <div class="col s12 m6 l4">
-        <div class="card medium">
-            <div class="card-image">
+      return <div className="col s12 m6 l4">
+        <div className="card medium">
+            <div className="card-image">
                 <img src={"/assets/" + this.props.image} />
             </div>
-            <div class="card-content">
+            <div className="card-content">
                 <Link className="grey-text text-darken-3" to={"/article/" + this.state.id}>
-                    <i class="material-icons right">more_vert</i>
+                    <i className="material-icons right">more_vert</i>
                 </Link>
-                <span class="card-title">
+                <span className="card-title">
                 <a href={this.state.url}>
                     {this.state.title}
                 </a>
@@ -77,8 +77,8 @@ class ArticleCard extends React.Component {
   }
   
   function NewsPage() {
-    return <div class="container">
-        <h4 class="grey-text lighten-1 center">News</h4>
+    return <div className="container">
+        <h4 className="grey-text lighten-1 center">News</h4>
         <Articles />
     </div>
   }

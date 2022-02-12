@@ -61,8 +61,8 @@ class Comment extends React.Component {
             <button className="btn right waves-effect" onClick={e => this.setState({showComment: !this.state.showComment})}>reply</button>
             <p>By: {this.state.by}</p>
             {this.state.showComment && <form onSubmit={this.sendForm.bind(this)}>
-                <div class="input-field">
-                    <input id={this.state.id} name="text" type="text" class="validate"/>
+                <div className="input-field">
+                    <input id={this.state.id} name="text" type="text" className="validate"/>
                     <label for={this.state.id}>Comment</label>
                     <input name="by" value="Anonymous" type="hidden" />
                     <input name="parent" value={this.state.id} type="hidden" />
