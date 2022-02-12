@@ -27,12 +27,12 @@ function App() {
           </div>
         </nav>
       </header>
-      <content>
+      <main>
       <Routes>
         <Route path="/" element={<NewsPage />} />
         <Route path="/article/:articleId" element={<ArticlePage />} />
       </Routes>
-      </content>
+      </main>
       <footer className="page-footer white">
           <div className="container">
             <div className="row">
