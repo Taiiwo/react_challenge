@@ -11,19 +11,63 @@ class Comments extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: "Loading..."
+            title: "Loading...",
+            showComment: false
         }
     }
 
     render() {
         return <div className="container">
             <h2><a href={this.state.url}>{this.state.title}</a></h2>
-            <h4>Comments:</h4>
+            <div className="row">
+                <h4 className="col s3">Comments:</h4>
+                <span className="col s1 offset-m8 offset-s7">
+                    <a class="btn-floating btn-large waves-effect waves-light teal"
+                        onClick={e => this.setState({showComment: !this.state.showComment})}
+                    >
+                        <i class="material-icons">edit</i>
+                    </a>
+                </span>
+            </div>
+            {this.state.showComment && <form onSubmit={this.sendForm.bind(this)}>
+                <div className="input-field">
+                    <input id={this.state.id} name="text" type="text" className="validate"/>
+                    <label for={this.state.id}>Comment</label>
+                    <input name="by" value="Anonymous" type="hidden" />
+                    <input name="parent" value={this.state.id} type="hidden" />
+                    <input name="time" value={this.getTime()} type="hidden" />
+                    <input name="type" value="comment" type="hidden" />
+                </div>
+            </form>}
             {this.state.kids && this.state.kids.length == 0 && <p className="center">No comments</p>}
             <div className="collection">
                 {this.state.comments}
             </div>
         </div>;
+    }
+
+    sendForm(e) {
+        e.preventDefault();
+        // hide comment field on submit
+        this.setState({showComment: false});
+        // iterate over the formdata entries generator and serialize to a javascript object
+        var s = Object.assign(...Array.from(
+            new FormData(e.target).entries(),
+            ([x,y]) => ({[x]:y})
+        ));
+        var data = {
+            by: s.by,
+            parent: parseInt(s.parent),
+            text: s.text,
+            time: parseInt(s.time),
+            type: s.type
+        };
+        console.log(data);
+        window.M.toast({html: "Comment sent successfully!", classes: "green"});
+    }
+
+    getTime() {
+        return new Date().getTime();
     }
 
     componentDidMount() {
