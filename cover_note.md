@@ -25,7 +25,7 @@ Each comment on the comment page features a reply button, which when clicked, op
 
 To the client
 -------------
-Dear <Client name>,
+Dear {Client name},
 
 Find attached a URL to a GitHub repository containing the requested work. The page takes the top 9 posts from the HackerNews API, and displays them in a Material Design compliant grid. The article comments can also be displayed surplus to the requirements, by clicking the three dot icon next to each article title. There you will find a nested array of comments, along with the ability to submit a comment to each, with each comment submitting the data to the browser console as requested.
 
