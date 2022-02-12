@@ -17,7 +17,7 @@ class Comments extends React.Component {
 
     render() {
         return <div className="container">
-            <h2>{this.state.title}</h2>
+            <h2><a href={this.state.url}>{this.state.title}</a></h2>
             <h4>Comments:</h4>
             {this.state.kids && this.state.kids.length == 0 && <p className="center">No comments</p>}
             <div className="collection">
