@@ -58,8 +58,10 @@ class Comment extends React.Component {
         return <li className="collection-item">
             {/* Potentially dangerous! (we might want to do our own sanitization!) */}
             <p dangerouslySetInnerHTML={{__html: this.state.text}}></p>
-            <button className="btn right waves-effect" onClick={e => this.setState({showComment: !this.state.showComment})}>reply</button>
-            <p>By: {this.state.by}</p>
+            <div className="row">
+                <span className="col s6">By: {this.state.by}</span>
+                <button className="btn waves-effect col s2 offset-s4" onClick={e => this.setState({showComment: !this.state.showComment})}>reply</button>
+            </div>
             {this.state.showComment && <form onSubmit={this.sendForm.bind(this)}>
                 <div className="input-field">
                     <input id={this.state.id} name="text" type="text" className="validate"/>
