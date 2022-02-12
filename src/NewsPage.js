@@ -70,7 +70,7 @@ class ArticleCard extends React.Component {
         .then(data => {
             // update the state with an article card for each of the first 9 items
             this.setState({articles: data.splice(0, 9).map((id, index) => 
-            <ArticleCard articleId={id} image={this.state.images[index % this.state.images.length]} />
+            <ArticleCard key={index} articleId={id} image={this.state.images[index % this.state.images.length]} />
             )});
         })
     }
